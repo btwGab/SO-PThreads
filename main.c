@@ -1,10 +1,9 @@
 #include <stdio.h>
-
 #include <stdlib.h>
 #include <time.h>
 #include <math.h>
 
-#define TAM_MATRIZ 10
+#define TAM_MATRIZ 1000
 #define SEED 67
 
 int **Alocar_matriz_real(int m, int n) {
@@ -66,60 +65,62 @@ int ehPrimo(int n) {
     return 1;
 }
 
-int main() {
-
-    srand(SEED);
-
-    struct timespec inicio, fim;
-
-    //Criação da matriz aleatória
-
-    int **matriz = Alocar_matriz_real(TAM_MATRIZ, TAM_MATRIZ);
-
-    aleatorizarMatriz(matriz);
-
-    printarMatriz(matriz);
-
-    //Busca serial
-
-    int cont_serial = 0;
-
-    clock_gettime(CLOCK_MONOTONIC, &inicio);
-
+void algoritmoSerial(int *cont, int **matriz) {
     for (int i = 0; i < TAM_MATRIZ; i++) {
         for (int j = 0; j < TAM_MATRIZ; j++) {
             if (ehPrimo(matriz[i][j])) {
-                cont_serial += 1;
+                (*cont) += 1;
             }
         }
     }
+}
+
+void algoritmoParalelo(int *cont, int **matriz) {
+    printf("A ser implementado");
+}
+
+int main() {
+
+    srand(SEED);
+    struct timespec inicio, fim;
+
+
+
+    //Criação da matriz aleatória
+    int **matriz = Alocar_matriz_real(TAM_MATRIZ, TAM_MATRIZ);
+    aleatorizarMatriz(matriz);
+    printarMatriz(matriz);
+    
+
+    //Busca serial
+    int cont_serial = 0;
+    clock_gettime(CLOCK_MONOTONIC, &inicio);
+
+    algoritmoSerial(&cont_serial, matriz);
 
     clock_gettime(CLOCK_MONOTONIC, &fim);
-
     double tempo_gasto = (fim.tv_sec - inicio.tv_sec) + (fim.tv_nsec - inicio.tv_nsec) / 1000000000.0;
-
     printf("\nBusca Serial\n");
     printf("Número de primos: %d\n", cont_serial);
     printf("Tempo de execução: %f\n", tempo_gasto);
 
+
+
     //Busca paralela
-
     int cont_paralelo = 0;
-
     clock_gettime(CLOCK_MONOTONIC, &inicio);
 
-    //Algoritmo de busca
+    algoritmoParalelo(&cont_paralelo, matriz);
 
     clock_gettime(CLOCK_MONOTONIC, &fim);
-
     tempo_gasto = (fim.tv_sec - inicio.tv_sec) + (fim.tv_nsec - inicio.tv_nsec) / 1000000000.0;
-
     printf("\nBusca Paralela\n");
     printf("Número de primos: %d\n", cont_paralelo);
     printf("Tempo de execução: %f\n", tempo_gasto);
 
-    //Liberação de ponteiros
 
+
+    //Liberação de ponteiros
     for (int i = 0; i < TAM_MATRIZ; i++) {
         free(matriz[i]);
     }
