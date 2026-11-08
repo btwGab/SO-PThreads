@@ -1,7 +1,0 @@
-﻿  main.c
-C:\Users\kamik\source\repos\SO PThreads\SO PThreads\main.c(99,5): warning C4013: 'clock_gettime' indefinido; assumindo extern retornando int
-C:\Users\kamik\source\repos\SO PThreads\SO PThreads\main.c(99,19): error C2065: 'CLOCK_MONOTONIC': identificador não declarado
-C:\Users\kamik\source\repos\SO PThreads\SO PThreads\main.c(103,19): error C2065: 'CLOCK_MONOTONIC': identificador não declarado
-C:\Users\kamik\source\repos\SO PThreads\SO PThreads\main.c(106,12): warning C4566: caractere representado por nome de caractere universal (UCN) '\u00FA' não pode ser representado na página de código atual (932)
-C:\Users\kamik\source\repos\SO PThreads\SO PThreads\main.c(107,12): warning C4566: caractere representado por nome de caractere universal (UCN) '\u00E7' não pode ser representado na página de código atual (932)
-C:\Users\kamik\source\repos\SO PThreads\SO PThreads\main.c(107,12): warning C4566: caractere representado por nome de caractere universal (UCN) '\u00E3' não pode ser representado na página de código atual (932)

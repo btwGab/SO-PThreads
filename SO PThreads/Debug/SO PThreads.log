@@ -1,5 +1,0 @@
-﻿  main.c
-C:\Users\kamik\source\repos\SO PThreads\SO PThreads\main.c(104,12): warning C4566: caractere representado por nome de caractere universal (UCN) '\u00FA' não pode ser representado na página de código atual (932)
-C:\Users\kamik\source\repos\SO PThreads\SO PThreads\main.c(88,29): warning C4101: 'fim': variável local não referenciada
-C:\Users\kamik\source\repos\SO PThreads\SO PThreads\main.c(88,21): warning C4101: 'inicio': variável local não referenciada
-  SO PThreads.vcxproj -> C:\Users\kamik\source\repos\SO PThreads\Debug\SO PThreads.exe
